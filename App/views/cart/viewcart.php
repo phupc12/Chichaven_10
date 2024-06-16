@@ -74,18 +74,18 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <span class="text-black">Tổng</span>
+                        <span class="text-black">Số lượng</span>
                     </div>
                     <div class="col-md-6 text-right">
-                        <strong class="text-black"><?php echo number_format($tong); ?> <sup>vnđ</sup></strong>
+                        <strong class="text-black"><?= count($_SESSION['mycart']) ?> sản phẩm</strong>
                     </div>
                 </div>
                 <div class="row mb-5">
                     <div class="col-md-6">
-                        <span class="text-black">Phí giao hàng</span>
+                        <span class="text-black">Tổng tiền</span>
                     </div>
                     <div class="col-md-6 text-right">
-                        <strong class="text-black">0 <sup>vnđ</sup></strong>
+                        <strong class="text-black"><?php echo number_format($tong); ?> <sup>vnđ</sup></strong>
                     </div>
                 </div>
 

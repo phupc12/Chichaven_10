@@ -23,7 +23,7 @@
                                 <th class="p-0 pb-2 ps-3 product-thumbnail text-start">Ảnh</th>
                                 <th class="p-0 pb-2 ps-3 product-name text-start">Tên</th>
                                 <th class="p-0 pb-2 ps-3 product-price text-start">Giá</th>
-                                <th class="p-0 pb-2 ps-3 product-quantity">Số lượng</th>
+                                <th class="p-0 pb-2 text-center product-quantity">Số lượng</th>
                                 <th class="p-0 pb-2 ps-3 product-total">Tổng</th>
                                 <th class="p-0 pb-2 ps-3 product-remove"></th>
                             </tr>
@@ -32,36 +32,41 @@
                             <?php
                             $tong = 0;
                             $i = 0;
-                            foreach ($_SESSION['mycart'] as &$cart) {
-                                $hinh = $cart[2];
-                                $ttien = $cart[3] * $cart[4];
-                                $tong += $ttien;
+                            if ($_SESSION['mycart']) {
+                                foreach ($_SESSION['mycart'] as $cart) {
+                                    $hinh = $cart[2];
+                                    $ttien = $cart[3] * $cart[4];
+                                    $tong += $ttien;
+                                    ?>
+                                    <tr>
+                                        <td class="text-start product-thumbnail">
+                                            <img src="<?= $hinh ?>" alt="Image" class="w-100 p-0">
+                                        </td>
+                                        <td class="product-name text-start">
+                                            <h2 class="h5 text-black"><?= $cart[1] ?></h2>
+                                        </td>
+                                        <td class="text-start"><?= number_format($cart[3]) ?> <sup>vnđ</sup></td>
+                                        <td class="p-0">
+                                            <div class="input-group mb-3 d-flex align-items-center quantity-container">
+                                                <button <?= ($cart[4]==1) ? 'disabled' : '' ?> type="submit" name="giamSL" class="btn btn-sm btn-secondary"><i class="fas fa-minus"></i></button>
+                                                <input disabled type="text" class="px-0 form-control text-center quantity-amount w-25" name="quantity[]" value="<?= $cart[4] ?>">
+                                                <button type="submit" name="themSL" class="btn btn-sm btn-secondary"><i class="fas fa-plus"></i></button>
+                                                <input type="hidden" name="indexCart" value="<?= $i ?>">
+                                            </div>
+                                            </td>
+                                        <td><?= number_format($ttien) ?> <sup>vnđ</sup></td>
+                                        <td><a href="index.php?act=delcart&idcart=<?= $i ?>" class="btn btn-black btn-sm"><i
+                                                    class="fa-solid fa-trash-can"></i></a></td>
+                                    </tr>
+                                    <?php
+                                    $i++;
+                                }
+                            } else {
                                 ?>
                                 <tr>
-                                    <td class="text-start product-thumbnail">
-                                        <img src="<?= $hinh ?>" alt="Image" class="w-100 p-0">
-                                    </td>
-                                    <td class="product-name text-start">
-                                        <h2 class="h5 text-black"><?= $cart[1] ?></h2>
-                                    </td>
-                                    <td class="text-start"><?= number_format($cart[3]) ?> <sup>vnđ</sup></td>
-                                    <td>
-                                        <div class="input-group mb-3 d-flex align-items-center quantity-container"
-                                            style="max-width: 120px;">
-                                            <input type="text" class="form-control text-center quantity-amount"
-                                                name="quantity[]" value="<?= $cart[4] ?>" placeholder=""
-                                                aria-label="Example text with button addon" aria-describedby="button-addon1"
-                                                readonly>
-                                        </div>
-                                    </td>
-                                    <td><?= number_format($ttien) ?> <sup>vnđ</sup></td>
-                                    <td><a href="index.php?act=delcart&idcart='<?= $i ?>'" class="btn btn-black btn-sm"><i
-                                                class="fa-solid fa-trash-can"></i></a></td>
+                                    <td colspan="5">Chưa có sản phẩm nào <a href="index.php?act=shop" class="nav-link text-primary fw-bold">&rarr; Cửa hàng</a></td>
                                 </tr>
-                                <?php
-                                $i++;
-                            }
-                            ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

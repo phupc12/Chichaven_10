@@ -104,7 +104,7 @@ if (isset($_GET['act'])) {
             header('Location: ../index.php');
             exit;
         case 'dskh':
-            $listtaikhoan=loadall_taikhoan();
+            $listtaikhoan = loadall_taikhoan();
             include "nguoidung/user.php";
             break;
         case 'xoatk':
@@ -163,37 +163,37 @@ if (isset($_GET['act'])) {
         case 'xoabl':
             if (isset($_GET['id_bl']) && ($_GET['id_bl'] > 0)) {
                 $id_bl = $_GET['id_bl'];
-                delete_binhluan($_GET['id_bl']); 
+                delete_binhluan($_GET['id_bl']);
             }
             header('Location: index.php?act=dsbl');
             break;
-            case 'dsdhct':
-                $listdonhangct = loadall_donhangct();
-                include "donhang/listdhct.php";
+        case 'dsdhct':
+            $listdonhangct = loadall_donhangct();
+            include "donhang/listdhct.php";
             break;
-            case 'xoadhct':
-                if (isset($_GET['token_order']) && ($_GET['token_order'] > 0)) {
-                    delete_donhangct($_GET['token_order']); 
-                }
-                
-                $listdonhangct = loadall_donhangct();
-                include "donhang/listdhct.php";
-                break;
-                case 'dsdh':
-                    $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : '';
-                    $token_order = isset($_POST['iddh']) ? $_POST['iddh'] : 0;
-                    $listdonhangct = loadall_donhangct();
-                    $listdonhang = loadall_donhang($kyw, $token_order); // Updated with isset check
-                    include "donhang/list.php";
-                    break;
-                    case 'xoadh':
-                        if (isset($_GET['token_order']) && ($_GET['token_order'] > 0)) {
-                            delete_donhang($_GET['token_order']); 
-                        }
-                        
-                        $listdonhang = loadall_donhang();
-                        include "donhang/list.php";
-                        break;
+        case 'xoadhct':
+            if (isset($_GET['token_order']) && ($_GET['token_order'] > 0)) {
+                delete_donhangct($_GET['token_order']);
+            }
+
+            $listdonhangct = loadall_donhangct();
+            include "donhang/listdhct.php";
+            break;
+        case 'dsdh':
+            $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : '';
+            $token_order = isset($_POST['iddh']) ? $_POST['iddh'] : 0;
+            $listdonhangct = loadall_donhangct();
+            $listdonhang = loadall_donhang($kyw, $token_order); // Updated with isset check
+            include "donhang/list.php";
+            break;
+        case 'xoadh':
+            if (isset($_GET['token_order']) && ($_GET['token_order'] > 0)) {
+                delete_donhang($_GET['token_order']);
+            }
+
+            $listdonhang = loadall_donhang();
+            include "donhang/list.php";
+            break;
     }
 } else {
     include "home.php";

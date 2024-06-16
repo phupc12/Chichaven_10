@@ -14,16 +14,16 @@ $stmt->execute();
 $totalUsers = $stmt->fetchColumn();
 
 // Lấy số lượng người dùng theo vai trò
-$sql = "SELECT rol, COUNT(ID) as count FROM users GROUP BY rol";
+$sql = "SELECT role, COUNT(ID) as count FROM users GROUP BY role";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $userCounts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $dataPointsUsers = [];
 foreach ($userCounts as $userCount) {
-    if ($userCount['rol'] == 'admin') {
+    if ($userCount['role'] == 'admin') {
         $label = "Admin";
-    } elseif ($userCount['rol'] == 'manager') {
+    } elseif ($userCount['role'] == 'manager') {
         $label = "Manager";
     } else {
         $label = "Users";

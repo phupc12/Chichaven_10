@@ -1,7 +1,10 @@
 
 <?php
-    session_start();
     ob_start();
+    session_start();
+    if(!isset($_SESSION['mycart'])) $_SESSION['mycart']=[];
+    if(!isset($_SESSION['user'])) $_SESSION['user']=[];
+    if(!isset($_SESSION['error'])) $_SESSION['error']=[];
     include "App/dao/pdo.php";
     include "App/dao/sanpham.php";
     include "App/dao/binhluan.php";
@@ -9,9 +12,6 @@
     include "App/dao/taikhoan.php";
     include "App/views/global.php";
     include "App/views/header.php";
-    if(!isset($_SESSION['mycart'])) $_SESSION['mycart']=[];
-    if(!isset($_SESSION['user'])) $_SESSION['user']=[];
-    if(!isset($_SESSION['error'])) $_SESSION['error']=[];
     //home
     $spnew = loadall_sanpham_home();
     //shop
@@ -107,7 +107,7 @@
                         $checkusers = checkusers($pdo, $email, $pass);
                 
                         if (is_array($checkusers)) {
-                            if ($checkusers['rol'] == 'admin' || $checkusers['rol'] == 'user') {
+                            if ($checkusers['role'] === 'admin' || $checkusers['role'] === 'user') {
                                 $_SESSION['user'] = $checkusers;
                                 header('Location: index.php');
                             }
@@ -124,7 +124,7 @@
             case 'logout':
                 unset($_SESSION['user']);
                 header('Location: index.php');
-                exit;
+                break;
             case 'register':
                 if(isset($_POST['dangky'])&&($_POST['dangky'])){
                     $name=$_POST['name'];

@@ -7,7 +7,6 @@ if(isset($_SESSION['user']['role'])) {
 }else die('Not access, return to <a href="../index.php">Home</a>');
 
 include "../App/dao/pdo.php";
-require_once "functions.php";
 include "../App/dao/danhmuc_admin.php";
 include "../App/dao/quanlydonhang.php";
 include "../App/dao/sanpham_admin.php";

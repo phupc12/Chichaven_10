@@ -46,7 +46,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php"><i class="bi bi-house-door"></i> Trang chủ</a>
+                        <a class="nav-link" href="../index.php"><i class="bi bi-house-door"></i> Trang chủ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?act=adddm"><i class="bi bi-list"></i> Danh mục</a>

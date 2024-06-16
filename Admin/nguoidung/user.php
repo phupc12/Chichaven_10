@@ -36,7 +36,7 @@
                                             <span>'.$email.'</span>
                                         </div>
                                         <div class="col"> 
-                                            <span>' .$rol.'</span> 
+                                            <span>' .$role.'</span> 
                                         </div>
                                         <div class="col">
                                             <span>'.$phone.'</span>

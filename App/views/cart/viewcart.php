@@ -20,42 +20,41 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="product-thumbnail">Image</th>
-                                <th class="product-name">Product</th>
-                                <th class="product-price">Price</th>
-                                <th class="product-quantity">Quantity</th>
-                                <th class="product-total">Total</th>
-                                <th class="product-remove">Remove</th>
+                                <th class="product-thumbnail text-start">Ảnh</th>
+                                <th class="product-name text-start">Tên</th>
+                                <th class="product-price text-start">Giá</th>
+                                <th class="product-quantity">Số lượng</th>
+                                <th class="product-total">Tổng</th>
+                                <th class="product-remove"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $tong = 0;
-                            $i = 0; 
+                            $i = 0;
                             foreach ($_SESSION['mycart'] as &$cart) {
-                                
                                 $hinh =  $cart[2];
                                 $ttien = $cart[3] * $cart[4];
                                 $tong += $ttien;
-                                $xoasp='<a href="index.php?act=delcart&idcart='.$i.'" class="btn btn-black btn-sm"><i class="fa-solid fa-trash-can"></i></a>';
-
-                                echo '<tr>
-                                    <td class="product-thumbnail">
-                                        <img src="' . $hinh . '" alt="Image" class="img-fluid">
+                            ?>
+                            <tr>
+                                    <td class="text-start product-thumbnail">
+                                        <img src="<?= $hinh ?>" alt="Image" class="w-75">
                                     </td>
-                                    <td class="product-name">
-                                        <h2 class="h5 text-black">' . $cart[1] . '</h2>
+                                    <td class="product-name text-start">
+                                        <h2 class="h5 text-black"><?= $cart[1] ?></h2>
                                     </td>
-                                    <td>$' . number_format($cart[3], 2) . '</td>
+                                    <td class="text-start"><?= number_format($cart[3]) ?> <sup>vnđ</sup></td>
                                     <td>
                                         <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                                            <input type="text" class="form-control text-center quantity-amount" name="quantity[]" value="' . $cart[4] . '" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" readonly>
+                                            <input type="text" class="form-control text-center quantity-amount" name="quantity[]" value="<?= $cart[4] ?>" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" readonly>
                                         </div>
                                     </td>
-                                    <td>$' . number_format($ttien, 2) . '</td>
-                                    <td>'.$xoasp.'</td>
-                                </tr>';
-                                $i++;
+                                    <td><?= number_format($ttien) ?> <sup>vnđ</sup></td>
+                                    <td><a href="index.php?act=delcart&idcart='<?= $i ?>'" class="btn btn-black btn-sm"><i class="fa-solid fa-trash-can"></i></a></td>
+                                </tr>
+                            <?php
+                            $i++;
                             }
                             ?>
                         </tbody>

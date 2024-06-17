@@ -11,6 +11,7 @@
         <div class="mb-3">
           <label for="loginPassword" class="form-label">Mật khẩu</label>
           <input type="password" name="pass" class="form-control" id="loginPassword" placeholder="Nhập mật khẩu của bạn" required>
+          <a href="index.php?act=quen-mat-khau" class="nav-link text-danger text-end"><i class="fas fa-question-circle me-2"></i>Quên mật khẩu</a>
         </div>
         <div class="d-grid">
           <button id="loginButton" type="submit" value="Đăng nhập" name="dangnhap" class="btn btn-primary">Đăng nhập</button>

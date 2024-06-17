@@ -63,6 +63,9 @@
             case 'contact':
                 include "App/views/contact.php";
                 break;
+            case 'doi-mat-khau':
+                require_once 'App/controllers/doimatkhau.php';
+                break;
             case 'addtocart':
                 require_once "App/controllers/giohang.php";
                 break;

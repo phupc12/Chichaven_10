@@ -82,20 +82,20 @@ if ($checkout) {
         extract(pdo_query_one('SELECT name tensanpham FROM sanpham WHERE id =' . $product_id));
         $viewOrder .= '
     <tr>
-        <td style="border: 1px solid;text-align:start">' . $tensanpham . '</td>
-        <td style="border: 1px solid;text-align:center">' . $quantity . ' </td>
-        <td style="border: 1px solid;text-align:end">' . number_format($unit_price) . ' vnđ</td>
-        <td style="border: 1px solid;text-align:end">' . number_format($quantity * $unit_price) . ' vnđ</td>
+        <td style="margin-left:5px; padding: 15px 5px;border: 1px solid;text-align:start">' . $tensanpham . '</td>
+        <td style="padding: 15px 5px;border: 1px solid;text-align:center">' . $quantity . ' </td>
+        <td style="padding: 15px 5px;border: 1px solid;text-align:end">' . number_format($unit_price) . ' vnđ</td>
+        <td style="padding: 15px 5px;border: 1px solid;text-align:end">' . number_format($quantity * $unit_price) . ' vnđ</td>
     </tr>';
     }
     #gửi mail
     $invoice = '
-    <table style="border: 1px solid;text-align: center;padding: 5px;">
+    <table style="border: 1px solid;text-align: center;padding: 5px; width: 100%">
         <thead style="border: 1px solid;">
-            <th style="border: 1px solid; background-color: #3b5d50 ;color: #ffffff;text-align:start">Tên sản phẩm</th>
-            <th style="border: 1px solid; background-color: #3b5d50 ;color: #ffffff;text-align:center">Số lượng</th>
-            <th style="border: 1px solid; background-color: #3b5d50 ;color: #ffffff;text-align:end">Giá</th>
-            <th style="border: 1px solid; background-color: #3b5d50 ;color: #ffffff;text-align:end">Thành tiền</th>
+            <th style="margin-left:5px; padding: 10px 2px;border: 1px solid; background-color: #3b5d50 ;color: #ffffff;text-align:start">Tên sản phẩm</th>
+            <th style="padding: 10px 2px;border: 1px solid; background-color: #3b5d50 ;color: #ffffff;text-align:center">Số lượng</th>
+            <th style="padding: 10px 2px;border: 1px solid; background-color: #3b5d50 ;color: #ffffff;text-align:end">Giá</th>
+            <th style="padding: 10px 2px;border: 1px solid; background-color: #3b5d50 ;color: #ffffff;text-align:end">Thành tiền</th>
         </thead>
         <tbody>
         ';

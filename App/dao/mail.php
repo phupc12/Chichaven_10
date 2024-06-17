@@ -37,3 +37,32 @@ function mailForgotPassword($email,$password)
         // echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
     }
 }
+
+function mailInvoice($email,$invoice)
+{
+    $mail = new PHPMailer(true);
+    try {
+        //Cấu hình Server
+        // $mail->SMTPDebug = 2;
+        $mail->isSMTP(); // Sử dụng SMTP để gửi mail
+        $mail->Host = 'smtp.gmail.com'; // Server SMTP của gmail
+        $mail->SMTPAuth = true; // Bật xác thực SMTP
+        $mail->Username = 'votanphu.lop12a7@gmail.com'; // Tài khoản email
+        $mail->Password = 'soitqfpwgndxpulq'; // Mật khẩu ứng dụng ở bước 1 hoặc mật khẩu email
+        $mail->SMTPSecure = 'ssl'; // Mã hóa SSL
+        $mail->Port = 465; // Cổng kết nối SMTP
+        //Cấu hình thông tin người gửi
+        $mail->setFrom('votanphu.lop12a7@gmail.com', 'Chichaven Shop'); // Địa chỉ email và tên người gửi
+        $mail->addCC($email, 'USER');
+        // Định dạng Form HTML
+        $mail->isHTML(true);
+        // Tiêu đề
+        $mail->Subject = 'HOA DON DON HANG cua Chichaven';
+        // Nội dung
+        $mail->Body = $invoice;
+        $mail->send();
+    } catch (Exception $e) {
+        return false;
+        // echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+    }
+}

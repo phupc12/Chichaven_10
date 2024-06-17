@@ -119,6 +119,10 @@
                 }
                 include "App/views/register.php";
                 break;
+            case 'test':
+                require_once 'App/views/test.php';
+                exit;
+                break;
             default:
                 show_404();
                 break;

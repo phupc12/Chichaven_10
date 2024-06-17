@@ -17,3 +17,4 @@ if (isset($_POST['forgotPass'])) {
 }
 #render view
 require_once 'App/views/quenmatkhau.php';
+SỬA THÊM

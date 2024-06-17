@@ -1,7 +1,9 @@
 <?php
-#submit
 require_once 'App/dao/doimatkhau.php';
 $oldPass = $newPass = $verifyPass = '';
+if(!$_SESSION['user']) $formFailed = true;
+else $formFailed = false;
+#submit
 if (isset($_POST['changePass'])) {
     $oldPass = $_POST['oldPass'];
     $newPass = $_POST['newPass'];

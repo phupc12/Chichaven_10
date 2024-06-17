@@ -6,6 +6,7 @@
     if(!isset($_SESSION['user'])) $_SESSION['user']=[];
     if(!isset($_SESSION['error'])) $_SESSION['error']=[];
     include "App/dao/pdo.php";
+    include "App/dao/mail.php";
     include "App/dao/sanpham.php";
     include "App/dao/binhluan.php";
     include "App/dao/thanhtoan.php";
@@ -65,6 +66,9 @@
                 break;
             case 'doi-mat-khau':
                 require_once 'App/controllers/doimatkhau.php';
+                break;
+            case 'quen-mat-khau':
+                require_once 'App/controllers/quenmatkhau.php';
                 break;
             case 'addtocart':
                 require_once "App/controllers/giohang.php";

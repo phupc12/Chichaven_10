@@ -5,6 +5,12 @@
         <h2 class="h3 mb-3 text-black text-center">Đổi mật khẩu</h2>
         <div class="p-3 p-lg-5 border">
         <?= show_error() # ở App/dao/thanhtoan.php ?>
+        <?php if($formFailed){ ?>
+          <div class="text-center">
+            <p class="text-danger p-0 h5">Vui lòng đăng nhập để đổi mật khẩu</p>
+            <a href="index.php?act=login" class="nav-link text-primary fs-5">&rarr; Đăng nhập</a>
+          </div>
+        <?php } else { ?>
           <form method="post">
             <div class="form-group row mb-4">
               <div class="col-md-12">
@@ -31,7 +37,8 @@
             <div class="col-12 d-flex justify-content-center">
                 <button name="changePass" type="submit" class="btn btn-sm btn-primary">Đổi mật khẩu</button>
             </div>
-            </form>
+          </form>
+        <?php } ?>
         </div>
       </div>
     </div>

@@ -36,20 +36,39 @@
                     <td><?php echo $donhang['total_amount']; ?></td>
                     <td>
                         <?php 
-                        if ($donhang['status'] == 2) {
-                            echo 'Đơn hàng bị hủy';
-                        } elseif ($donhang['status'] == 1) {
-                            echo 'Đơn hàng còn';
-                        } else {
-                            echo 'Trạng thái không xác định';
+                        $status_class = '';
+                        $status_text = '';
+                        switch ($donhang['status']) {
+                            case 1:
+                                $status_class = 'badge bg-primary';
+                                $status_text = 'Đơn hàng mới';
+                                break;
+                            case 2:
+                                $status_class = 'badge bg-warning';
+                                $status_text = 'Đang vận chuyển';
+                                break;
+                            case 3:
+                                $status_class = 'badge bg-info';
+                                $status_text = 'Đơn đã nhận';
+                                break;
+                            case 4:
+                                $status_class = 'badge bg-success';
+                                $status_text = 'Hoàn tất';
+                                break;
+                            default:
+                                $status_class = 'badge bg-danger';
+                                $status_text = 'Đơn hàng bị hủy';
+                                break;
                         }
                         ?>
+                        <span class="<?php echo $status_class; ?>"><?php echo $status_text; ?></span>
                     </td>
                     <td><?php echo $donhang['name']; ?></td>
                     <td><?php echo $donhang['address']; ?></td>
                     <td><?php echo $donhang['email']; ?></td>
                     <td><?php echo $donhang['phone']; ?></td>
                     <td>
+                        <a href="index.php?act=suadonhang&token_order=<?php echo $donhang['token_order']; ?>" class="btn btn-sm btn-primary">Sửa</a>
                         <button onclick="confirmDh('<?php echo $donhang['token_order']; ?>')" class="btn btn-sm btn-danger">Xóa</button>
                     </td>
                 </tr>

@@ -28,4 +28,13 @@ function delete_donhang($token_order){
     pdo_execute($sql, $token_order);
     
 }
-?>
+function loadone_donghang($token_order) {
+    return pdo_query_one("SELECT * FROM orders WHERE token_order = '".$token_order."'");
+}
+
+
+function  update_status($token_order, $status){
+    $sql = "UPDATE orders set status= " . $status . " where token_order='" . $token_order."'";
+    pdo_query_one($sql);
+
+}

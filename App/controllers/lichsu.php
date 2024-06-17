@@ -11,7 +11,7 @@ if (isset($_GET['token']) && $_GET['token']) {
             extract($order);
             #XÓA ĐƠN HÀNG
             if (isset($_GET['huy'])) {
-                pdo_execute('UPDATE orders SET status = 2 WHERE token_order = "'.$token.'"');
+                pdo_execute('UPDATE orders SET status = 5 WHERE token_order = "'.$token.'"');
                 header('Location: index.php?act=lichsu');
                 exit;
             }

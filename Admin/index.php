@@ -199,8 +199,31 @@ if (isset($_GET['act'])) {
             $listdonhang = loadall_donhang();
             include "donhang/list.php";
             break;
+            case 'suadonhang':
+                if (isset($_GET['token_order']) && !empty($_GET['token_order'])) {
+                    $token_order = $_GET['token_order'];
+                    $onedonhang = loadone_donghang($token_order);
+                }
+                include "donhang/update.php";
+                break;
+            case 'updatedonhang':
+                if (isset($_POST['capnhattrangthai']) && $_POST['token_order']) {
+                    $token_order = $_POST['token_order'];
+                    $status = $_POST['status'];
+                    update_status($token_order,$status);
+        
+                    $thongbao = "Cập nhật thành công";
+                } else {
+                    $thongbao = "Vui lòng cung cấp đầy đủ thông tin.";
+                }
+                $sql = "SELECT * FROM orders ORDER BY token_order DESC";
+                $listdonhang = pdo_query($sql);
+                include "donhang/list.php";
+                break;
+        
+        }
     }
-} else {
+else {
     include "home.php";
 }
 
